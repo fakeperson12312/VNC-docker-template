@@ -1,0 +1,23 @@
+services:
+  ubvnc:
+    image: dorowu/ubuntu-desktop-lxde-vnc
+    container_name: ubuntuvnc
+    privileged: true
+#    deploy:
+#      resources:
+#        limits:
+#          memory: 4g
+#          cpus: "4.0"
+    environment:
+      - PASSWORD=ubuntu
+      - USER=ubuntu
+      - VNC_PASSWORD=ubuntu
+      - SSL_PORT=80
+    ports:
+      - "47387:80"
+      - "6885:5900"
+    volumes:
+      - ./ubvnc/home:/home
+      - /dev/shm:/dev/shm
+#    devices:
+#      - /dev/kvm
